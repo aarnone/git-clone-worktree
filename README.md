@@ -5,8 +5,7 @@ Clone a git repository and set it up for a worktree-based workflow.
 ## Installation
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/aarnone/git-clone-worktree/master/git-clone-worktree -o ~/.local/bin/git-clone-worktree
-chmod +x ~/.local/bin/git-clone-worktree
+curl -fsSL https://raw.githubusercontent.com/aarnone/git-clone-worktree/master/install.sh | sh
 ```
 
 ## Usage
