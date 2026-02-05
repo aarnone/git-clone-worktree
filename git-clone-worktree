@@ -14,10 +14,17 @@ print_success() { echo -e "${GREEN}✓ $1${NC}"; }
 print_info() { echo -e "${BLUE}→ $1${NC}"; }
 print_warning() { echo -e "${YELLOW}⚠ $1${NC}"; }
 
+# Determine program name based on whether it's invoked as git subcommand
+if [ "${GIT_PREFIX+x}" = "x" ]; then
+    PROG_NAME="git clone-worktree"
+else
+    PROG_NAME=$(basename "$0")
+fi
+
 # Show usage
 usage() {
     cat << USAGE
-Usage: $(basename "$0") <repository-url> [directory-name]
+Usage: $PROG_NAME <repository-url> [directory-name]
 
 Clone a git repository and set it up for worktree-based workflow.
 
@@ -26,9 +33,9 @@ Arguments:
     directory-name    Optional: Target directory name (defaults to repo name)
 
 Examples:
-    $(basename "$0") git@github.com:user/myproject.git
-    $(basename "$0") https://github.com/user/myproject.git myproject
-    $(basename "$0") git@github.com:user/myproject.git ~/projects/myproject
+    $PROG_NAME git@github.com:user/myproject.git
+    $PROG_NAME https://github.com/user/myproject.git myproject
+    $PROG_NAME git@github.com:user/myproject.git ~/projects/myproject
 
 What this script does:
     1. Creates directory structure with .bare/ subdirectory
